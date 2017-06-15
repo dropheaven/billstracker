@@ -37,4 +37,12 @@ class BillsController < ApplicationController
     end
   end
 
+  get '/bills/:id/edit' do
+    if logged_in?
+      erb :'bills/edit'
+    else
+      redirect '/login'
+    end
+  end
+
 end
