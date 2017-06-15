@@ -39,6 +39,7 @@ class BillsController < ApplicationController
 
   get '/bills/:id/edit' do
     if logged_in?
+      @bill = Bill.find(params[:id])
       erb :'bills/edit'
     else
       redirect '/login'

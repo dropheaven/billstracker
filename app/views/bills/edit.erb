@@ -1,0 +1,14 @@
+<h1>Make changes to your bill</h1>
+
+<form action="/bills/<%= @bill.id %>" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%= @bill.name %>">
+  <br></br>
+
+  <label for="amount">Amount:</label>
+  <input type="number" step="0.001" name="amount" value="<%= @bill.amount %>">
+  <br></br>
+
+  <input type="submit" value="Update Bill">
+
+</form>
