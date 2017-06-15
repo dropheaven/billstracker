@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+  </head>
+  <body>
+    <h1>Homepage</h1>
+
+    <h2>Current Bills</h2>
+    <% if !@user.bills.empty? %>
+      <% @user.bills.each do |bill| %>
+        <h3><%= bill.name %></h3>
+        <h4><%= bill.amount %></h4>
+      <% end %>
+    <% end %>
+
+    <a href="/bills/new">Add new bill</a>
+
+    <br></br>
+
+    <a href="/logout">Log Out</a>
+
+  </body>
+</html>
