@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if !logged_in?
+    if logged_in?
       redirect '/bills'
     else
       erb :'/users/create_user'
@@ -9,10 +9,11 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params)
-    if !@user.valid?
+    if params[:name] == "" || params[:email] == "" || params[:password] == "" || params[:due_date]
       redirect '/signup'
     else
+      user = User.create(params)
+      session[:user_id] = user.id
       redirect '/bills'
     end
   end

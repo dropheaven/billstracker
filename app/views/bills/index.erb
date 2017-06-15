@@ -3,23 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body>
-    <h1>Homepage</h1>
+  <body class="body">
 
-    <h2>Current Bills</h2>
-    <% if !@user.bills.empty? %>
-      <% @user.bills.each do |bill| %>
-        <h3><%= bill.name %></h3>
-        <h4><%= bill.amount %></h4>
-      <% end %>
-    <% end %>
+    <header class="mainheader">
+      <nav class="topnav">
+        <a href="/bills">Home</a>
+        <a href="/bills/new">New Bill</a>
+        <a href="/logout">Log Out</a>
+      </nav>
+    </header>
 
-    <a href="/bills/new">Add new bill</a>
-
-    <br></br>
-
-    <a href="/logout">Log Out</a>
+    <div class="mainContent">
+      <div class="content">
+        <content>
+          <% if !@user.bills.empty? %>
+            <% @user.bills.each do |bill| %>
+              <ul>
+                <li><%= bill.name %> bill</li>
+                <p>Amount Owed: $<%= bill.amount %>0</p>
+                <p>Due Date: <%= bill.due_date %></p>
+                <nav class="midnav">
+                  <a href="/bills/<%=bill.id%>/edit">Edit bill</a>
+                  <a href="/bills/<%=bill.id%>/delete">Delete bill</a>
+                </nav>
+              </ul>
+            <% end %>
+          <% else %>
+            <h1>Looks like you have no pending bills!</h1>
+        <% end %>
+        </content>
+      </div>
+    </div>
 
   </body>
 </html>

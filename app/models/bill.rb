@@ -1,4 +1,4 @@
 class Bill < ActiveRecord::Base
   belongs_to :user
-  validates :name, :amount, presence: true
+  validates :name, :amount, :due_date, presence: true
 end

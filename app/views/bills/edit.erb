@@ -1,6 +1,8 @@
 <h1>Make changes to your bill</h1>
 
 <form action="/bills/<%= @bill.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
   <label for="name">Name:</label>
   <input type="text" name="name" value="<%= @bill.name %>">
   <br></br>
@@ -8,6 +10,10 @@
   <label for="amount">Amount:</label>
   <input type="number" step="0.001" name="amount" value="<%= @bill.amount %>">
   <br></br>
+
+  <label for="due date">Due Date:</label>
+  <input type="text" name="due_date" value="<%= @bill.due_date %>">
+  <br><br>
 
   <input type="submit" value="Update Bill">
 

@@ -46,4 +46,27 @@ class BillsController < ApplicationController
     end
   end
 
+  patch '/bills/:id' do
+    if params[:name] == "" || params[:amount] == ""
+      redirect "/bills/#{params[:id]}/edit"
+    else
+      @bill = Bill.find(params[:id])
+      @bill.name = params[:name]
+      @bill.amount = params[:amount]
+      @bill.due_date = params[:due_date]
+      @bill.save
+      redirect '/bills'
+    end
+  end
+
+  delete '/bills/:id/delete' do
+    if logged_in?
+      @bill = Bill.find(params[:id])
+      @bill.delete
+      redirect '/bills'
+    else
+      redirect '/login'
+    end
+  end
+
 end

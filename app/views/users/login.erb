@@ -1,15 +1,31 @@
-<h1>Log In</h1>
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple login form</title>
 
-<form action="/login" method="post">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-  <label for="email">Email:</label>
-  <input type="text" name="email">
-  <br></br>
+<body>
+  <h1 class="title">Bill Tracker</h1>
+  <div class="container">
+  <div class="login">
+  	<h1 class="login-heading">
+      <strong>Welcome,</strong> Please login.</h1>
+      <form method="post">
+        <input type="text" name="email" placeholder="email" required="required" class="input-txt" />
+          <input type="password" name="password" placeholder="Password" required="required" class="input-txt" />
+          <div class="login-footer">
+             <a href="/signup" class="lnk">Sign up!</a>
+            <button type="submit" class="btn btn--right">Log In  </button>
+          </div>
+      </form>
+  </div>
+</div>
 
-  <label for="password">Password:</label>
-  <input type="password" name="password">
-  <br></br>
+    <script src="js/index.js"></script>
 
-  <input type="submit" value="Log In">
-
-</form>
+</body>
+</html>

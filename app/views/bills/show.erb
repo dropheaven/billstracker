@@ -1,6 +1,27 @@
-<h1><%= @bill.name %></h1>
-<h2>$<%= @bill.amount %></h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Bill</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
 
-<br></br>
+    <header class="mainheader">
+      <nav class="topnav">
+        <a href="/bills">Home</a>
+        <a href="/bills/new">New Bill</a>
+        <a href="/logout">Log Out</a>
+      </nav>
+    </header>
 
-<a href="/logout">Log Out</a>
+    <div class="midnav">
+      <h2>Bill: <%= @bill.name %></h1>
+      <h2>Amount: $<%= @bill.amount %>0</h2>
+      <h2>Date Due: <%= @bill.due_date %></h2>
+      <a href="/bills/<%=@bill.id%>/edit">Edit bill</a>
+      <a href="bills/<%= @bill.id %>/delete">Delete bill</a>
+    </div>
+
+  </body>
+</html>
