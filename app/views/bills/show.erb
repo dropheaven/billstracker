@@ -1,10 +1,14 @@
 <a href="/bills">Home</a>
 <a href="/bills/new">New Bill</a>
+<a href="/bills/<%=@bill.id%>/edit">Edit bill</a>
 <a href="/logout">Log Out</a>
 
 
 <h2>Bill: <%= @bill.name %></h1>
 <h2>Amount: $<%= @bill.amount %>0</h2>
 <h2>Date Due: <%= @bill.due_date %></h2>
-<a href="/bills/<%=@bill.id%>/edit">Edit bill</a>
-<a href="bills/<%= @bill.id %>/delete">Delete bill</a>
+
+<form action="/bills/<%= @bill.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete bill">
+</form>
