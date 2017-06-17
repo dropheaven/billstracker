@@ -1,5 +1,11 @@
 <strong>Welcome,</strong> Please login.</h1>
 
+<% if flash.has?(:message) %>
+  <br></br>
+  <%= flash[:message] %>
+  <br></br>
+<% end %>
+
 <form method="post">
   <input type="text" name="email" placeholder="email" required="required" class="input-txt" />
     <input type="password" name="password" placeholder="Password" required="required" class="input-txt" />
