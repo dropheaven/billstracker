@@ -1,6 +1,11 @@
 <a href="/bills">Home</a>
 <a href="/bills/new">New Bill</a>
 <a href="/logout">Log Out</a>
+<br></br>
+
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 <h1>Add New Bill</h1>
 
