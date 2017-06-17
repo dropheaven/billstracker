@@ -29,17 +29,21 @@ class BillsController < ApplicationController
   end
 
   get '/bills/:id' do
-    if logged_in?
-      @bill = Bill.find(params[:id])
+    @bill = Bill.find(params[:id])
+
+    if logged_in? && current_user.id == @bill.user.id
       erb :'/bills/show'
+    elsif logged_in?
+      redirect '/bills'
     else
       redirect '/'
     end
   end
 
   get '/bills/:id/edit' do
-    if logged_in?
-      @bill = Bill.find(params[:id])
+    @bill = Bill.find(params[:id])
+
+    if logged_in? && current_user.id == @bill.user.id
       erb :'bills/edit'
     else
       redirect '/login'
