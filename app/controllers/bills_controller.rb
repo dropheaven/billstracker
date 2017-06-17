@@ -59,6 +59,7 @@ class BillsController < ApplicationController
     end
   end
 
+
   delete '/bills/:id/delete' do
     if logged_in?
       @bill = Bill.find(params[:id])

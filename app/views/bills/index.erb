@@ -1,42 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body class="body">
+<a href="/bills">Home</a>
+<a href="/bills/new">New Bill</a>
+<a href="/logout">Log Out</a>
 
-    <header class="mainheader">
-      <nav class="topnav">
-        <a href="/bills">Home</a>
-        <a href="/bills/new">New Bill</a>
-        <a href="/logout">Log Out</a>
-      </nav>
-    </header>
 
-    <div class="mainContent">
-      <div class="content">
-        <content>
-          <% if !@user.bills.empty? %>
-            <% @user.bills.each do |bill| %>
-              <ul>
-                <li><%= bill.name %> bill</li>
-                <p>Amount Owed: $<%= bill.amount %>0</p>
-                <p>Due Date: <%= bill.due_date %></p>
-                <nav class="midnav">
-                  <a href="/bills/<%=bill.id%>/edit">Edit bill</a>
-                  <a href="/bills/<%=bill.id%>/delete">Delete bill</a>
-                </nav>
-              </ul>
-            <% end %>
-          <% else %>
-            <h1>Looks like you have no pending bills!</h1>
-        <% end %>
-        </content>
-      </div>
-    </div>
-
-  </body>
-</html>
+<% if !@user.bills.empty? %>
+  <% @user.bills.each do |bill| %>
+    <ul>
+      <li><%= bill.name %> bill</li>
+      <p>Amount Owed: $<%= bill.amount %>0</p>
+      <p>Due Date: <%= bill.due_date %></p>
+        <a href="/bills/<%=bill.id%>">View</a>
+        <a href="/bills/<%=bill.id%>/edit">Edit</a>
+        <a href="/bills/<%=bill.id%>/delete">Delete</a>      
+    </ul>
+  <% end %>
+<% else %>
+    <h1>Looks like you have no pending bills!</h1>
+<% end %>
