@@ -1,4 +1,8 @@
+require "rack-flash"
+
 class BillsController < ApplicationController
+
+  use Rack::Flash
 
   get '/bills' do
     if logged_in?
@@ -24,34 +28,42 @@ class BillsController < ApplicationController
       user.bills << @bill
       redirect :"/bills/#{@bill.id}"
     else
+      flash[:message] = "Error, please fill in all fields"
       redirect '/bills/new'
     end
   end
 
   get '/bills/:id' do
-    @bill = Bill.find(params[:id])
-
-    if logged_in? && current_user.id == @bill.user.id
-      erb :'/bills/show'
-    elsif logged_in?
-      redirect '/bills'
-    else
+    if !Bill.exists?(params[:id])
       redirect '/'
+    else
+      @bill = Bill.find(params[:id])
+      if logged_in? && current_user.id == @bill.user.id
+        erb :'/bills/show'
+      elsif logged_in?
+        redirect '/bills'
+      else
+        redirect '/'
+      end
     end
   end
 
   get '/bills/:id/edit' do
-    @bill = Bill.find(params[:id])
-
-    if logged_in? && current_user.id == @bill.user.id
-      erb :'bills/edit'
+    if !Bill.exists?(params[:id])
+      redirect '/'
     else
-      redirect '/login'
+      @bill = Bill.find(params[:id])
+      if logged_in? && current_user.id == @bill.user.id
+        erb :'bills/edit'
+      else
+        redirect '/login'
+      end
     end
   end
 
   patch '/bills/:id' do
     if params[:name] == "" || params[:amount] == ""
+      flash[:notice] = "Please fill in all fields"
       redirect "/bills/#{params[:id]}/edit"
     else
       @bill = Bill.find(params[:id])
