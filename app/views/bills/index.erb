@@ -1,18 +1,52 @@
-<a href="/bills">Home</a>
-<a href="/bills/new">New Bill</a>
-<a href="/logout">Log Out</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
 
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Bill</span> Tracker</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/">Home</a></li>
+            <li><a href="/bills/new">New Bill</a></li>
+            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-<% if !@user.bills.empty? %>
-  <% @user.bills.each do |bill| %>
-    <ul>
-      <li><%= bill.name %> bill</li>
-      <p>Amount Owed: $<%= bill.amount %>0</p>
-      <p>Due Date: <%= bill.due_date %></p>
-        <a href="/bills/<%=bill.id%>">View</a>
-        <a href="/bills/<%=bill.id%>/edit">Edit</a>
-    </ul>
-  <% end %>
-<% else %>
-    <h1>Looks like you have no pending bills!</h1>
-<% end %>
+    <section id="showcase">
+      <div class="container">
+        <h1>Welcome to Bill Tracker</h1>
+        <p>Pending bills</p>
+      </div>
+    </section>
+
+    <% if !@user.bills.empty? %>
+      <% @user.bills.each do |bill| %>
+        <ul>
+          <li><%= bill.name %> bill</li>
+          <p>Amount Owed: $<%= bill.amount %>0</p>
+          <p>Due Date: <%= bill.due_date %></p>
+            <a href="/bills/<%=bill.id%>">View</a>
+            <a href="/bills/<%=bill.id%>/edit">Edit</a>
+        </ul>
+      <% end %>
+    <% else %>
+        <h1>Looks like you have no pending bills!</h1>
+    <% end %>
+
+    <footer>
+      <p>Bill Tracker, Copyright &copy; 2017</p>
+    </footer>
+
+  </body>
+</html>
