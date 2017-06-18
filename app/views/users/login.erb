@@ -6,11 +6,9 @@
   <br></br>
 <% end %>
 
-<form method="post">
-  <input type="text" name="email" placeholder="email" required="required" class="input-txt" />
-    <input type="password" name="password" placeholder="Password" required="required" class="input-txt" />
-    <div class="login-footer">
-       <a href="/signup" class="lnk">Sign up!</a>
-      <button type="submit" class="btn btn--right">Log In  </button>
-
+<form action="/login" method="post">
+  <input type="text" name="email" placeholder="email" required="required"/>
+    <input type="password" name="password" placeholder="Password" required="required"/>
+      <a href="/signup" class="lnk">Sign up!</a>
+    <button type="submit" class="button_1">Log In</button>
 </form>
