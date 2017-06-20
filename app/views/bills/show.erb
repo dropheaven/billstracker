@@ -1,14 +1,54 @@
-<a href="/bills">Home</a>
-<a href="/bills/new">New Bill</a>
-<a href="/bills/<%=@bill.id%>/edit">Edit bill</a>
-<a href="/logout">Log Out</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @bill.name %> Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Bill</span> Tracker</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/">Home</a></li>
+            <li><a href="/bills/new">New Bill</a></li>
+            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>Welcome to Bill Tracker</h1>
+        <p>Bill details</p>
+      </div>
+    </section>
+
+    <div class="form">
+      <h2>Bill: <%= @bill.name %></h1>
+      <h2>Amount: $<%= @bill.amount %>0</h2>
+      <h2>Date Due: <%= @bill.due_date %></h2>
+      <br>
 
 
-<h2>Bill: <%= @bill.name %></h1>
-<h2>Amount: $<%= @bill.amount %>0</h2>
-<h2>Date Due: <%= @bill.due_date %></h2>
+      <form class="form" action="/bills/<%= @bill.id %>/delete" method="post">
+        <a id="anchor" href="/bills/<%=@bill.id%>/edit">Edit bill</a>
 
-<form action="/bills/<%= @bill.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Delete bill">
-</form>
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <button type="submit" class="button_1">Delete bill</button>
+      </form>
+
+    </div>
+
+    <footer>
+      <p>Bill Tracker, Copyright &copy; 2017</p>
+    </footer>
+
+  </body>
+</html>

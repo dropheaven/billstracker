@@ -33,7 +33,7 @@
     <% if !@user.bills.empty? %>
       <% @user.bills.each do |bill| %>
         <ul>
-          <li><%= bill.name %> bill</li>
+          <li><strong><%= bill.name %> bill</strong></li>
           <p>Amount Owed: $<%= bill.amount %>0</p>
           <p>Due Date: <%= bill.due_date %></p>
             <a href="/bills/<%=bill.id%>">View</a>
