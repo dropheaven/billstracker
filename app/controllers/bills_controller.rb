@@ -71,7 +71,7 @@ class BillsController < ApplicationController
       @bill.amount = params[:amount]
       @bill.due_date = params[:due_date]
       @bill.save
-      redirect '/bills'
+      redirect "/bills/#{@bill.id}"
     end
   end
 
