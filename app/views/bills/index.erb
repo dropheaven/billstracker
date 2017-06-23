@@ -30,19 +30,23 @@
       </div>
     </section>
 
-    <% if !@user.bills.empty? %>
-      <% @user.bills.each do |bill| %>
-        <ul>
-          <li><strong><%= bill.name %> bill</strong></li>
-          <p>Amount Owed: $<%= bill.amount %>0</p>
-          <p>Due Date: <%= bill.due_date %></p>
-            <a href="/bills/<%=bill.id%>">View</a>
-            <a href="/bills/<%=bill.id%>/edit">Edit</a>
-        </ul>
+    <section id="bills">
+      <% if !@user.bills.empty? %>
+        <% @user.bills.each do |bill| %>
+          <ul>
+            <li><strong><%= bill.name %> bill</strong></li>
+            <p>Amount Owed: $<%= bill.amount %>0</p>
+            <p>Due Date: <%= bill.due_date %></p>
+              <a id="anchor" href="/bills/<%=bill.id%>">View</a>
+              <a id="anchor" href="/bills/<%=bill.id%>/edit">Edit</a>
+              <p>-----------------------------</p>
+          </ul>
+        <% end %>
+      <% else %>
+          <h1>Looks like you have no pending bills!</h1>
       <% end %>
-    <% else %>
-        <h1>Looks like you have no pending bills!</h1>
-    <% end %>
+    </section>
+
 
     <footer>
       <p>Bill Tracker, Copyright &copy; 2017</p>
