@@ -1,24 +1,65 @@
-<a href="/bills">Home</a>
+<!-- <a href="/bills">Home</a>
 <a href="/bills/new">New Bill</a>
 <a href="/logout">Log Out</a>
 
-<h1>Make changes to your bill</h1>
+<h1>Make changes to your bill</h1> -->
 
-<form action="/bills/<%= @bill.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <label for="name">Name:</label>
-  <input type="text" name="name" value="<%= @bill.name %>">
-  <br></br>
 
-  <label for="amount">Amount:</label>
-  <input type="number" step="0.001" name="amount" value="<%= @bill.amount %>">
-  <br></br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Your Bill</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
 
-  <label for="due date">Due Date:</label>
-  <input type="text" name="due_date" value="<%= @bill.due_date %>">
-  <br><br>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Bill</span> Tracker</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <input type="submit" value="Update Bill">
+    <section id="showcase">
+      <div class="container">
+        <h1>Welcome to Bill Tracker</h1>
+        <p>Edit Bill</p>
+      </div>
+    </section>
 
-</form>
+    <div class="form">
+      <form action="/bills/<%= @bill.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="patch">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= @bill.name %>">
+        <br></br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" step="0.001" name="amount" value="<%= @bill.amount %>">
+        <br></br>
+
+        <label for="due date">Due Date:</label>
+        <input type="text" name="due_date" value="<%= @bill.due_date %>">
+        <br><br>
+
+        <button type="submit" class="button_1">Update bill</button>
+
+      </form>
+    </div>
+
+    <footer>
+      <p>Bill Tracker, Copyright &copy; 2017</p>
+    </footer>
+
+  </body>
+</html>
